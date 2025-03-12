@@ -40,10 +40,12 @@ public class ClientService {
 
     @Transactional
     public ClientDTO update(ClientDTO dto, Long id){
-        Optional<Client> result = repository.findById(id);
-        Client client = result.orElseThrow(()-> new ResourceExceptionNotFound("Cliente inexistente"));
-        copyEntityToDTO(dto, client);
-        return new ClientDTO(client);
+
+            Optional<Client> result = repository.findById(id);
+            Client client = result.orElseThrow(()-> new ResourceExceptionNotFound("Cliente inexistente"));
+            copyEntityToDTO(dto, client);
+            return new ClientDTO(client);
+
     }
 
     @Transactional
